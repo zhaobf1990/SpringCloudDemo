@@ -1,0 +1,10 @@
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: hello-server
+eureka:
+  client:
+    serviceUrl:
+     defaultZone: http://localhost:1111/eureka/

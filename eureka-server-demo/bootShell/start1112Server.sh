@@ -1,0 +1,1 @@
+java -jar target/eureka-server-demo-0.0.1.jar --spring.profiles.active=peer2
