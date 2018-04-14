@@ -2,7 +2,9 @@ server:
   port: 1111
 eureka:
   instance:
+    #这里的每个profile的hostname都必须不一致.否则会导致问题(好像是服务被剔除,无法被同同步)
+    #需要在hosts文件里配置peer1指向本机
     hostname: peer1
   client:
     serviceUrl:
-      defaultZone: http://localhost:1112
+      defaultZone: http://peer2:1112/eureka_server/eureka/

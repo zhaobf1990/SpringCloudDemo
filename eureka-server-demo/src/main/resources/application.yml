@@ -9,17 +9,19 @@ eureka:
     hostname: localhost
   client:
     #是否向注册中心注册自己
-    register-with-eureka: false
+    register-with-eureka: true
     #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以设置为false
-    fetch-registry: false
+    fetch-registry: true
     serviceUrl:
-      defaultZone: http://localhost:1111
+      defaultZone: http://peer1:1111/eurekaserver/
 endpoints:
   shutdown:
     #启用shutdown
     enabled: true
     #禁用密码验证
     sensitive: false
+server:
+  context-path: /eureka_server
 #management:
 #  address: 127.0.0.1
 #  port: 1111
