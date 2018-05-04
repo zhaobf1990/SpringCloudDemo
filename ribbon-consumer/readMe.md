@@ -7,3 +7,13 @@
 3.配置服务中心地址.
 
 4.通过restTemplate方法hello-service.
+
+
+
+
+
+
+
+发现的问题:
+
+1.HelloService服务原本有两台,如果其中一台关闭,则ribbon-consumer在一分钟内,有1/2的概念是请求出错的.因为请求被分发到已关闭的实例

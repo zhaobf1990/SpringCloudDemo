@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 //让该应用注册为Eureka客户端应用,以获得服务发现的能力
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @SpringBootApplication
 public class RibbonConsumerApplication {
     @Bean
