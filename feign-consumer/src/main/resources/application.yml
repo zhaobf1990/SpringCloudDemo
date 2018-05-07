@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: ribbon-consumer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:1111/eureka_server/eureka/,http://peer2:1112/eureka_server/eureka/
+server:
+  port: 9003
+feign:
+  hystrix:
+#      这项配置默认是关闭的.  关闭状态下无法实现服务的降级
+      enabled: true
+logging:
+  level:
+    com:
+      example:
+        zhaobf:
+          feignconsumer:
+            #输出日志级别为DEBUG
+            HelloService: DEBUG
+

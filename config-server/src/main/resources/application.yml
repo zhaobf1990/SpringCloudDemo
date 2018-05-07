@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          #git管理配置
+          uri: git@github.com:zhaobf1990/spring-config-repository.git
+#          配置文件所在的仓库中的路径
+          search-paths: config-repo
+          username: zhaobf1990
+          password: winthe1990
+#        overrides:
+#          利用该属性可以方便地为SpringCloud应用配置一些共同的属性或是属性
+#          from: git-default-3.0
+server:
+  port: 7001
+eureka:
+  client:
+    service-url:
+      #配置服务到注册中心
+      defaultZone: http://peer1:1111/eureka_server/eureka/,http://peer2:1112/eureka_server/eureka/

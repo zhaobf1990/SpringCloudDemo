@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+zuul:
+  routes:
+    api-a:
+      path : /api-a/**
+      serviceId: hello-server
+    api-b:
+      path: /api-b/**
+      serviceId: ribbon-consumer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:1111/eureka_server/eureka/,http://peer2:1112/eureka_server/eureka/
+
+
+
+
+
+
+
+
+
+
+
+
+#传统的路由方式,需要花费大量的时间来维护各个路由的path与url的关系.
+#为了解决这个问题,SpringCloudZuul实现了与SpringCloudEureka的无疑结合,我们可以让路由的path不是映射具体的url,
+#而是让它映射到某个具体的服务,而具体的url则交给Eureka的服务发现机制去自动维护,我们称这类路由为面向服务的路由
+#zuul:
+#  routes:
+#    api-a-url:
+#      #所有符合api-a-url/**的规则的访问都将被路由转发到http://localhost:8081
+#      path: /api-a-url/**
+#      url: http://localhost:8081/
+
