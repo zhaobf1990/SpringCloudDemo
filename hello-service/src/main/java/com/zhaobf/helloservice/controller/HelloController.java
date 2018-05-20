@@ -3,6 +3,7 @@ package com.zhaobf.helloservice.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,26 +14,29 @@ import java.util.Random;
 
 @RestController
 public class HelloController {
-    private  final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private DiscoveryClient client;
 
+    @Value("${server.port}")
+    private String port;
 
-    @RequestMapping(value = "/hello" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String index() {
         ServiceInstance instance = client.getLocalServiceInstance();
         logger.info("/hello, host: {}  , service_id: {}", instance.getHost(), instance.getServiceId());
-        return "Hello World";
+        return "Hello World  my port is " + port;
     }
 
 
     /**
      * 请求会被挂起0~3000毫秒
+     *
      * @return
      * @throws InterruptedException
      */
-    @RequestMapping(value = "/hello2" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
     public String index2() throws InterruptedException {
         ServiceInstance instance = client.getLocalServiceInstance();
         int sleepTime = new Random().nextInt(4000);
